@@ -1,6 +1,5 @@
 package com.yufei.controller;
 
-import com.sun.deploy.net.HttpResponse;
 import com.yufei.utils.SuccessType;
 
 import javax.servlet.http.HttpServletResponse;
