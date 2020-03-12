@@ -1,18 +1,20 @@
 package com.yufei.vo;
 
-import com.yufei.utils.SuccessType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.yufei.enums.ResultEnum;
+import lombok.*;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class ResponseData {
-    private SuccessType successType = SuccessType.SUCCESS;
-    private String code = "0";
-    private String message = "请求成功";
+
+    private String code = ResultEnum.SUCCESS.getCode();
+    private String message = ResultEnum.SUCCESS.getMessage();
     private Object data;
+
+    public ResponseData(ResultEnum result) {
+        this.code = result.getCode();
+        this.message = result.getMessage();
+    }
 }
