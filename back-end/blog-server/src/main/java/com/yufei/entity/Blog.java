@@ -1,56 +1,63 @@
 package com.yufei.entity;
 
+import com.yufei.vo.ParamsVo;
+
 import java.util.Date;
 import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * 博客表(Blog)实体类
  *
  * @author makejava
- * @since 2020-03-12 00:12:13
+ * @since 2020-03-23 22:34:11
  */
-public class Blog implements Serializable {
-    private static final long serialVersionUID = 563249845212252955L;
+public class Blog implements Serializable, ParamsVo {
+    private static final long serialVersionUID = -75062120758450786L;
     /**
-    * 博客主键
-    */
-    private Integer b0100;
+    * id
+    */    
+      @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer b0100;
     /**
     * 发表用户
-    */
-    private String u0100;
+    */    
+        private String u0100;
     /**
     * 发表时间
-    */
-    private Date b0102;
+    */    
+        private Date b0102;
     /**
     * 标题
-    */
-    private String b0103;
+    */    
+        private String b0103;
     /**
     * 内容
-    */
-    private String b0104;
+    */    
+        private String b0104;
     /**
     * 点赞数
-    */
-    private Integer b0105;
+    */    
+        private Integer b0105;
     /**
     * 回复数
-    */
-    private Integer b0106;
+    */    
+        private Integer b0106;
     /**
     * 浏览量
-    */
-    private Integer b0107;
+    */    
+        private Integer b0107;
     /**
     * 是否可用
-    */
-    private String usable;
+    */    
+        private String usable;
     /**
     * 经办日期
-    */
-    private Date operated;
+    */    
+        private Date operated;
 
 
     public Integer getB0100() {

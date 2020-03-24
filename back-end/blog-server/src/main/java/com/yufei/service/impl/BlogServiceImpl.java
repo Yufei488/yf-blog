@@ -12,7 +12,7 @@ import java.util.List;
  * 博客表(Blog)表服务实现类
  *
  * @author makejava
- * @since 2020-03-12 00:12:13
+ * @since 2020-03-23 22:34:11
  */
 @Service("blogService")
 public class BlogServiceImpl implements BlogService {
@@ -27,7 +27,9 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public Blog queryById(Integer b0100) {
-        return this.blogDao.queryById(b0100);
+        Blog blog = new Blog();
+        blog.setB0100(b0100);
+        return this.blogDao.selectByPrimaryKey(blog);
     }
 
     /**

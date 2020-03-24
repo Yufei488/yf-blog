@@ -11,7 +11,11 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 @Constraint(validatedBy = RequiredParams.AA.class)
 public @interface RequiredParams {
+    // 必须参数数组
     String[] value() default {};
+
+    // 是否所有都为必须
+    boolean isAll() default false;
 
     class AA implements ConstraintValidator<Annotation,String[]> {
 

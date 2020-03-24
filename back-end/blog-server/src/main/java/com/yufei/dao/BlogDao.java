@@ -1,18 +1,19 @@
 package com.yufei.dao;
 
 import com.yufei.entity.Blog;
-import org.apache.ibatis.annotations.Mapper;
+import com.yufei.base.BaseMapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
  * 博客表(Blog)表数据库访问层
  *
  * @author makejava
- * @since 2020-03-12 00:12:13
+ * @since 2020-03-23 22:34:11
  */
 @Mapper
-public interface BlogDao {
+public interface BlogDao extends BaseMapper<Blog>{
 
     /**
      * 通过ID查询单条数据
