@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yufei.dao.BlogDao">
+
+    <resultMap type="com.yufei.entity.Blog" id="BlogMap">
+        <result property="b0100" column="b0100" jdbcType="INTEGER"/>
+        <result property="u0100" column="u0100" jdbcType="INTEGER"/>
+        <result property="b0102" column="b0102" jdbcType="TIMESTAMP"/>
+        <result property="b0103" column="b0103" jdbcType="VARCHAR"/>
+        <result property="b0104" column="b0104" jdbcType="VARCHAR"/>
+        <result property="b0105" column="b0105" jdbcType="INTEGER"/>
+        <result property="b0106" column="b0106" jdbcType="INTEGER"/>
+        <result property="b0107" column="b0107" jdbcType="INTEGER"/>
+        <result property="usable" column="usable" jdbcType="VARCHAR"/>
+        <result property="lastopt" column="lastOpt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+</mapper>
