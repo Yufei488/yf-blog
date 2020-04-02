@@ -18,4 +18,11 @@ public class ResultData {
         this.message = result.getMessage();
         this.explain = result.getMessage();
     }
+
+    public ResultData(ResultEnum result,Object data) {
+        this.code = result.getCode();
+        this.message = result.getMessage();
+        this.explain = result.getMessage();
+        this.data = data;
+    }
 }
