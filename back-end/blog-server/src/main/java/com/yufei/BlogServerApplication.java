@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-@MapperScan("com.yufei.mapper")
+@MapperScan("mapper")
 public class BlogServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(BlogServerApplication.class);

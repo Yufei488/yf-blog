@@ -2,8 +2,11 @@ package com.yufei.resolver;
 
 import com.yufei.annotation.RequiredParams;
 import com.yufei.exception.AppException;
+import com.yufei.exception.handler.AppExceptionHandler;
 import com.yufei.vo.ParamsVo;
 import org.apache.commons.beanutils.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -19,9 +22,11 @@ import java.util.List;
 import java.util.Map;
 
 public class RequiredParamsResolver implements HandlerMethodArgumentResolver {
+    private static final Logger log = LoggerFactory.getLogger(AppExceptionHandler.class);
+
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        System.out.println("**********必须参数检测**********");
+        log.info("必须参数检测");
         Class<?> type = methodParameter.getParameterType();
         Class<?>[] interfaces = type.getInterfaces();
         boolean flag = false;
@@ -30,7 +35,7 @@ public class RequiredParamsResolver implements HandlerMethodArgumentResolver {
         }
         boolean bool = flag && methodParameter.hasParameterAnnotation(RequiredParams.class);
         if (!bool) {
-            System.out.println("**********没有实现接口ParamsVo，未能检测**********");
+            log.info("没有实现接口ParamsVo，未能检测");
         }
         return bool;
     }
@@ -39,7 +44,7 @@ public class RequiredParamsResolver implements HandlerMethodArgumentResolver {
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         RequiredParams requiredParams = methodParameter.getParameterAnnotation(RequiredParams.class);
         HttpServletRequest request = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
-        System.out.println("**********开始检测[" + request.getServletPath() + "]必要参数**********");
+        log.info("开始检测[" + request.getServletPath() + "]["+methodParameter.getParameterType().getSimpleName()+"]必要参数");
         Map<String, String[]> parameterMap = request.getParameterMap();
         Class<?> aClass = methodParameter.getParameterType();
         Field[] declaredFields = aClass.getDeclaredFields();
@@ -74,7 +79,7 @@ public class RequiredParamsResolver implements HandlerMethodArgumentResolver {
         Class<?> type = methodParameter.getParameterType();
         Constructor<?> constructor = type.getConstructor();
         if (constructor == null) {
-            throw new RuntimeException("没有无参构造器");
+            throw new AppException("没有无参构造器");
         }
         // 构造javabean
         Object obj = constructor.newInstance();
@@ -85,7 +90,7 @@ public class RequiredParamsResolver implements HandlerMethodArgumentResolver {
                 e.printStackTrace();
             }
         });
-        System.out.println("**********"+"检测成功"+"**********");
+        log.info("检测通过");
         return obj;
     }
 }

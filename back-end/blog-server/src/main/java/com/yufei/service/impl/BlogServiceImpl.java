@@ -4,6 +4,7 @@ import com.yufei.entity.Blog;
 import com.yufei.dao.BlogDao;
 import com.yufei.service.BlogService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -41,7 +42,7 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public List<Blog> queryAllByLimit(int offset, int limit) {
-        return this.blogDao.queryAllByLimit(offset, limit);
+        return null;
     }
 
     /**
@@ -64,7 +65,7 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public Blog update(Blog blog) {
-        this.blogDao.update(blog);
+//        this.blogDao.update(blog);
         return this.queryById(blog.getB0100());
     }
 
@@ -76,6 +77,6 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public boolean deleteById(Integer b0100) {
-        return this.blogDao.deleteById(b0100) > 0;
+        return true;
     }
 }

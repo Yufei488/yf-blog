@@ -5,10 +5,10 @@ import com.yufei.dao.BlogDao;
 import java.util.List;
 
 /**
- * 博客表(Blog)表服务接口
+ * 博客信息表(Blog)表服务接口
  *
  * @author makejava
- * @since 2020-03-23 22:34:11
+ * @since 2020-04-02 21:51:26
  */
 public interface BlogService {
 

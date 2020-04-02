@@ -1,63 +1,60 @@
 package com.yufei.entity;
 
-import com.yufei.vo.ParamsVo;
-
 import java.util.Date;
 import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 /**
- * 博客表(Blog)实体类
+ * 博客信息表(Blog)实体类
  *
  * @author makejava
- * @since 2020-03-23 22:34:11
+ * @since 2020-04-02 21:51:26
  */
-public class Blog implements Serializable, ParamsVo {
-    private static final long serialVersionUID = -75062120758450786L;
+public class Blog implements Serializable {
+    private static final long serialVersionUID = 816689238448218694L;
     /**
-    * id
-    */    
-      @Id
+    * 博客id
+    */
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer b0100;
+    private Integer b0100;
     /**
-    * 发表用户
-    */    
-        private String u0100;
+    * 用户id
+    */
+    private Integer u0100;
     /**
     * 发表时间
-    */    
-        private Date b0102;
+    */
+    private Date b0102;
     /**
     * 标题
-    */    
-        private String b0103;
+    */
+    private String b0103;
     /**
     * 内容
-    */    
-        private String b0104;
+    */
+    private String b0104;
     /**
     * 点赞数
-    */    
-        private Integer b0105;
+    */
+    private Long b0105;
     /**
     * 回复数
-    */    
-        private Integer b0106;
+    */
+    private Long b0106;
     /**
     * 浏览量
-    */    
-        private Integer b0107;
+    */
+    private Long b0107;
     /**
     * 是否可用
-    */    
-        private String usable;
+    */
+    private String usable;
     /**
-    * 经办日期
-    */    
-        private Date operated;
+    * 最后操作时间
+    */
+    private Date lastopt;
 
 
     public Integer getB0100() {
@@ -68,11 +65,11 @@ public class Blog implements Serializable, ParamsVo {
         this.b0100 = b0100;
     }
 
-    public String getU0100() {
+    public Integer getU0100() {
         return u0100;
     }
 
-    public void setU0100(String u0100) {
+    public void setU0100(Integer u0100) {
         this.u0100 = u0100;
     }
 
@@ -100,27 +97,27 @@ public class Blog implements Serializable, ParamsVo {
         this.b0104 = b0104;
     }
 
-    public Integer getB0105() {
+    public Long getB0105() {
         return b0105;
     }
 
-    public void setB0105(Integer b0105) {
+    public void setB0105(Long b0105) {
         this.b0105 = b0105;
     }
 
-    public Integer getB0106() {
+    public Long getB0106() {
         return b0106;
     }
 
-    public void setB0106(Integer b0106) {
+    public void setB0106(Long b0106) {
         this.b0106 = b0106;
     }
 
-    public Integer getB0107() {
+    public Long getB0107() {
         return b0107;
     }
 
-    public void setB0107(Integer b0107) {
+    public void setB0107(Long b0107) {
         this.b0107 = b0107;
     }
 
@@ -132,12 +129,12 @@ public class Blog implements Serializable, ParamsVo {
         this.usable = usable;
     }
 
-    public Date getOperated() {
-        return operated;
+    public Date getLastopt() {
+        return lastopt;
     }
 
-    public void setOperated(Date operated) {
-        this.operated = operated;
+    public void setLastopt(Date lastopt) {
+        this.lastopt = lastopt;
     }
 
 }
