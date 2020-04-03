@@ -38,7 +38,7 @@ description: 管理系统主页
           >
             <a-sub-menu key="sub1">
               <span slot="title"><a-icon type="user"/>subnav 1</span>
-              <a-menu-item key="1">option1</a-menu-item>
+              <a-menu-item key="1" @click="changePage">打开系统管理界面</a-menu-item>
               <a-menu-item key="2">option2</a-menu-item>
               <a-menu-item key="3">option3</a-menu-item>
               <a-menu-item key="4">option4</a-menu-item>
@@ -60,7 +60,8 @@ description: 管理系统主页
           </a-menu>
         </a-layout-sider>
         <a-layout-content class="index-content-layout-childPage">
-          content
+          <!--操作页面路由视图-->
+          <router-view/>
         </a-layout-content>
       </a-layout>
     </a-layout-content>
@@ -72,19 +73,25 @@ description: 管理系统主页
 
 <script>
 export default {
-  name: 'BlogHome',
+  name: 'Home',
   data () {
     return {
-      systemsList: null
+      systemsList: null,
+      moduleName: 'systems'
     }
   },
   methods: {
     getSystems () {
-      this.$axios.post('http://127.0.0.1:8011/systems/querySystemList').then(res => {
-        this.systemsList = res.data.data
-      }).catch(res => {
-        this.$message.error('请求出错了!')
+      this.$submit({
+        data: {},
+        url: 'systems/querySystemList',
+        successCallback: res => {
+          this.systemsList = res.data.data
+        }
       })
+    },
+    changePage () {
+      this.$changePageByRouter({name: 'systemManager'})
     }
   },
   created () {
